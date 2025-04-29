@@ -1,0 +1,122 @@
+[
+    {
+      "id": 1,
+      "title": "Tropical Paradise Resort",
+      "price": 3290000,
+      "schedules": ["27/05", "03/06", "10/06"]
+    },
+    {
+      "id": 2,
+      "title": "Alpine Chalet Retreat",
+      "price": 4590000,
+      "schedules": ["29/05", "05/06", "12/06"]
+    },
+    {
+      "id": 3,
+      "title": "Urban Explorer's Dream",
+      "price": 5190000,
+      "schedules": ["01/06", "08/06", "15/06"]
+    },
+    {
+      "id": 4,
+      "title": "Enchanted Forest Retreat",
+      "price": 2490000,
+      "schedules": ["25/05", "01/06", "08/06"]
+    },
+    {
+      "id": 5,
+      "title": "Tranquil Lakeside Haven",
+      "price": 4790000,
+      "schedules": ["30/05", "06/06", "13/06"]
+    },
+    {
+      "id": 6,
+      "title": "Sandy Shores Beach Resort",
+      "price": 1390000,
+      "schedules": ["28/05", "04/06", "11/06"]
+    },
+    {
+      "id": 7,
+      "title": "Majestic Mountain Lodge",
+      "price": 1890000,
+      "schedules": ["31/05", "07/06", "14/06"]
+    },
+    {
+      "id": 8,
+      "title": "Metropolitan Marvels",
+      "price": 2990000,
+      "schedules": ["02/06", "09/06", "16/06"]
+    },
+    {
+      "id": 9,
+      "title": "Mystical Forest Sanctuary",
+      "price": 5990000,
+      "schedules": ["01/06", "08/06", "15/06"]
+    },
+    {
+      "id": 10,
+      "title": "Serene Lake Retreat",
+      "price": 3890000,
+      "schedules": ["27/05", "03/06", "10/06"]
+    },
+    {
+      "id": 11,
+      "title": "Golden Sands Beach Resort",
+      "price": 2790000,
+      "schedules": ["29/05", "05/06", "12/06"]
+    },
+    {
+      "id": 12,
+      "title": "Alpine Adventure Lodge",
+      "price": 990000,
+      "schedules": ["26/05", "02/06", "09/06"]
+    },
+    {
+      "id": 13,
+      "title": "Cultural Capitals",
+      "price": 3890000,
+      "schedules": ["28/05", "04/06", "11/06"]
+    },
+    {
+      "id": 14,
+      "title": "Enchanted Grove",
+      "price": 3290000,
+      "schedules": ["01/06", "08/06", "15/06"]
+    },
+    {
+      "id": 15,
+      "title": "Tranquil Mountain Hideaway",
+      "price": 3490000,
+      "schedules": ["30/05", "06/06", "13/06"]
+    },
+    {
+      "id": 16,
+      "title": "Seaside Sanctuary",
+      "price": 1790000,
+      "schedules": ["31/05", "07/06", "14/06"]
+    },
+    {
+      "id": 17,
+      "title": "Alpine Lakeside Lodge",
+      "price": 3590000,
+      "schedules": ["27/05", "03/06", "10/06"]
+    },
+    {
+      "id": 18,
+      "title": "Urban Oasis",
+      "price": 3290000,
+      "schedules": ["29/05", "05/06", "12/06"]
+    },
+    {
+      "id": 19,
+      "title": "Whispering Woods Retreat",
+      "price": 3090000,
+      "schedules": ["28/05", "04/06", "11/06"]
+    },
+    {
+      "id": 20,
+      "title": "Sapphire Shores Beach Resort",
+      "price": 4990000,
+      "schedules": ["01/06", "08/06", "15/06"]
+    }
+  ]

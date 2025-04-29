@@ -169,16 +169,17 @@ const ListingDetails = () => {
       </View>
 
       <Animated.View style={styles.footer} entering={SlideInDown.delay(200)}>
-        <TouchableOpacity
-          onPress={() => {}}
-          style={[styles.footerBtn, styles.footerBookBtn]}
-        >
-          <Text style={styles.footerBtnTxt}>Book Now</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={styles.footerBtn}>
-          <Text style={styles.footerBtnTxt}>${listing.price}</Text>
-        </TouchableOpacity>
-      </Animated.View>
+  <TouchableOpacity
+    onPress={() => router.push(`/booking?id=${listing.id}`)}
+    style={[styles.footerBtn, styles.footerBookBtn]}
+  >
+    <Text style={styles.footerBtnTxt}>Book Now</Text>
+  </TouchableOpacity>
+
+  <TouchableOpacity onPress={() => {}} style={styles.footerBtn}>
+    <Text style={styles.footerBtnTxt}>${listing.price}</Text>
+  </TouchableOpacity>
+</Animated.View>
     </>
   )
 }
