@@ -57,7 +57,7 @@ const Listings = ({ listings, category }: Props) => {
                 />
                 <Text style={styles.itemLocationTxt}>{item.location}</Text>
               </View>
-              <Text style={styles.itemPriceTxt}>${item.price}</Text>
+              <Text style={styles.itemPriceTxt}>{item.price} ₫</Text>
             </View>
           </View>
         </TouchableOpacity>

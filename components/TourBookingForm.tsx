@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 
 type Props = {
   basePrice: number
@@ -8,16 +8,19 @@ type Props = {
 
 const Booking = ({ basePrice, schedules }: Props) => {
   const [selectedDate, setSelectedDate] = useState(schedules[0])
-  const [adults, setAdults] = useState(2)
+  const [adults, setAdults] = useState(0)
   const [child610, setChild610] = useState(0)
   const [child25, setChild25] = useState(0)
   const [infants, setInfants] = useState(0)
 
+  const [fullName, setFullName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+
   const totalPrice =
     basePrice * adults +
     basePrice * 0.75 * child610 +
-    basePrice * 0.5 * child25 +
-    0 // infants free
+    basePrice * 0.5 * child25
 
   const renderCounter = (label: string, value: number, onChange: (val: number) => void) => (
     <View style={styles.row}>
@@ -34,8 +37,41 @@ const Booking = ({ basePrice, schedules }: Props) => {
     </View>
   )
 
+  const handleBooking = () => {
+    if (!fullName || !email || !phone) {
+      alert('Vui lòng nhập đầy đủ thông tin khách hàng!')
+      return
+    }
+
+    // Gửi dữ liệu đi (hoặc điều hướng)
+    alert(`Đặt tour thành công!\nTên: ${fullName}\nNgày đi: ${selectedDate}\nTổng tiền: ${totalPrice.toLocaleString()}₫`)
+  }
+
   return (
     <View style={styles.container}>
+      <Text style={styles.heading}>Thông tin khách hàng</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Họ tên"
+        value={fullName}
+        onChangeText={setFullName}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Số điện thoại"
+        value={phone}
+        onChangeText={setPhone}
+        keyboardType="phone-pad"
+      />
+
       <Text style={styles.heading}>Lịch Trình và Giá Tour</Text>
 
       <View style={styles.scheduleRow}>
@@ -60,7 +96,7 @@ const Booking = ({ basePrice, schedules }: Props) => {
 
       <Text style={styles.total}>Tổng Giá Tour: {totalPrice.toLocaleString()}₫</Text>
 
-      <TouchableOpacity style={styles.bookBtn}>
+      <TouchableOpacity style={styles.bookBtn} onPress={handleBooking}>
         <Text style={styles.bookBtnText}>Yêu cầu đặt</Text>
       </TouchableOpacity>
     </View>
@@ -81,6 +117,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
     color: '#2C3E50',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    borderRadius: 6,
+    marginBottom: 10,
+    backgroundColor: '#fff',
   },
   scheduleRow: {
     flexDirection: 'row',
