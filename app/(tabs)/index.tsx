@@ -21,19 +21,25 @@ import {
 const Page = () => {
   const headerHeight = useHeaderHeight()
   const [category, setCategory] = useState('All')
+  const [isChatVisible, setIsChatVisible] = useState(false)
+  const [chatInput, setChatInput] = useState('')
+  const [chatMessages, setChatMessages] = useState<string[]>([])
 
   const onCatChanged = (category: string) => {
-    console.log('Categpry: ', category)
     setCategory(category)
+  }
+
+  const handleSendMessage = () => {
+    if (chatInput.trim() === '') return
+    setChatMessages([...chatMessages, chatInput])
+    setChatInput('')
   }
 
   return (
     <>
       <Stack.Screen
         options={{
-          headerTransparent: true, // having the same color with the rest of the page,
-          // if we set headerTransparent to true , if the content of page have not style , will go to the page
-          // for fix that ==>  const headerHeight = useHeaderHeight()
+          headerTransparent: true,
           headerTitle: '',
           headerLeft: () => (
             <TouchableOpacity onPress={() => {}} style={{ marginLeft: 20 }}>
@@ -64,6 +70,7 @@ const Page = () => {
           ),
         }}
       />
+
       <View style={[styles.container, { paddingTop: headerHeight }]}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text style={styles.headingTxt}>Explore The Beautiful World!</Text>
@@ -84,12 +91,45 @@ const Page = () => {
           </View>
 
           <CategoryButtons onCagtegoryChanged={onCatChanged} />
-
           <Listings listings={listingData} category={category} />
-
           <GroupListings listings={groupData} />
         </ScrollView>
       </View>
+
+      {/* Nút bong bóng chat */}
+      <TouchableOpacity style={styles.chatBubble} onPress={() => setIsChatVisible(!isChatVisible)}>
+        <Ionicons name="chatbubbles" size={24} color="white" />
+      </TouchableOpacity>
+
+      {/* Hộp chat nổi góc dưới */}
+      {isChatVisible && (
+        <View style={styles.floatingChatBox}>
+          <View style={styles.chatHeader}>
+            <Text style={styles.chatTitle}>Chatting</Text>
+            <TouchableOpacity onPress={() => setIsChatVisible(false)}>
+              <Ionicons name="close" size={20} color={Colors.black} />
+            </TouchableOpacity>
+          </View>
+          <ScrollView style={styles.chatMessages}>
+            {chatMessages.map((msg, index) => (
+              <View key={index} style={styles.messageBubble}>
+                <Text>{msg}</Text>
+              </View>
+            ))}
+          </ScrollView>
+          <View style={styles.chatInputWrapper}>
+            <TextInput
+              placeholder="Texting..."
+              style={styles.chatInput}
+              value={chatInput}
+              onChangeText={setChatInput}
+            />
+            <TouchableOpacity onPress={handleSendMessage}>
+              <Ionicons name="send" size={20} color={Colors.primaryColor} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
     </>
   )
 }
@@ -124,5 +164,69 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 10,
     marginLeft: 20,
+  },
+  chatBubble: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: Colors.primaryColor,
+    width: 55,
+    height: 55,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+  },
+  floatingChatBox: {
+    position: 'absolute',
+    bottom: 90,
+    right: 20,
+    width: 280,
+    height: 300,
+    backgroundColor: Colors.white,
+    borderRadius: 12,
+    padding: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5,
+    zIndex: 20,
+  },
+  chatHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
+    paddingBottom: 6,
+    marginBottom: 6,
+  },
+  chatTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  chatMessages: {
+    flex: 1,
+    marginBottom: 6,
+  },
+  messageBubble: {
+    alignSelf: 'flex-end',
+    backgroundColor: '#f1f1f1',
+    padding: 6,
+    borderRadius: 8,
+    marginVertical: 4,
+    maxWidth: '80%',
+  },
+  chatInputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  chatInput: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+    padding: 6,
+    marginRight: 6,
   },
 })

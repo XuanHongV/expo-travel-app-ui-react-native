@@ -8,7 +8,7 @@ export default function BookingPage() {
   const { id } = useLocalSearchParams()
   const tour = destinations.find((t) => t.id === Number(id))
 
-  if (!tour) return <Text>Không tìm thấy tour</Text>
+  if (!tour) return <Text>No found Tour !!!</Text>
 
   return (
     <ScrollView>

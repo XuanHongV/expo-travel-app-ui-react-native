@@ -39,21 +39,21 @@ const Booking = ({ basePrice, schedules }: Props) => {
 
   const handleBooking = () => {
     if (!fullName || !email || !phone) {
-      alert('Vui lòng nhập đầy đủ thông tin khách hàng!')
+      alert('Please enter all customer information!')
       return
     }
 
-    // Gửi dữ liệu đi (hoặc điều hướng)
-    alert(`Đặt tour thành công!\nTên: ${fullName}\nNgày đi: ${selectedDate}\nTổng tiền: ${totalPrice.toLocaleString()}₫`)
+    // Submit booking data or navigate
+    alert(`Booking successful!\nName: ${fullName}\nDate: ${selectedDate}\nTotal: ${totalPrice.toLocaleString()}₫`)
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Thông tin khách hàng</Text>
+      <Text style={styles.heading}>Customer Information</Text>
 
       <TextInput
         style={styles.input}
-        placeholder="Họ tên"
+        placeholder="Full Name"
         value={fullName}
         onChangeText={setFullName}
       />
@@ -66,13 +66,13 @@ const Booking = ({ basePrice, schedules }: Props) => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Số điện thoại"
+        placeholder="Phone Number"
         value={phone}
         onChangeText={setPhone}
         keyboardType="phone-pad"
       />
 
-      <Text style={styles.heading}>Lịch Trình và Giá Tour</Text>
+      <Text style={styles.heading}>Schedule & Tour Price</Text>
 
       <View style={styles.scheduleRow}>
         {schedules.map((date) => (
@@ -89,15 +89,15 @@ const Booking = ({ basePrice, schedules }: Props) => {
         ))}
       </View>
 
-      {renderCounter(`Người lớn (>10 tuổi) x ${basePrice.toLocaleString()}₫`, adults, setAdults)}
-      {renderCounter('Trẻ em (6-10 tuổi)', child610, setChild610)}
-      {renderCounter('Trẻ em (2-5 tuổi)', child25, setChild25)}
-      {renderCounter('Trẻ nhỏ (<2 tuổi)', infants, setInfants)}
+      {renderCounter(`Adults (>10 years) x ${basePrice.toLocaleString()}₫`, adults, setAdults)}
+      {renderCounter('Children (6–10 years)', child610, setChild610)}
+      {renderCounter('Children (2–5 years)', child25, setChild25)}
+      {renderCounter('Infants (<2 years)', infants, setInfants)}
 
-      <Text style={styles.total}>Tổng Giá Tour: {totalPrice.toLocaleString()}₫</Text>
+      <Text style={styles.total}>Total Price: {totalPrice.toLocaleString()}₫</Text>
 
       <TouchableOpacity style={styles.bookBtn} onPress={handleBooking}>
-        <Text style={styles.bookBtnText}>Yêu cầu đặt</Text>
+        <Text style={styles.bookBtnText}>Request Booking</Text>
       </TouchableOpacity>
     </View>
   )
